@@ -30,7 +30,7 @@ public class SqlLogger extends SQLStorage {
             Connection connection = null;
             try {
                 connection = getConnection();
-                PreparedStatement statement = connection.prepareStatement("INSERT INTO IPs (ip) VALUES (?)");
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO IPs (ip) VALUES (?) ON DUPLICATE KEY UPDATE ip=ip");
                 statement.setString(1, ip);
                 statement.executeUpdate();
             } catch (Exception e) {
@@ -47,7 +47,7 @@ public class SqlLogger extends SQLStorage {
             Connection connection = null;
             try {
                 connection = getConnection();
-                PreparedStatement statement = connection.prepareStatement("INSERT INTO UUIDs (uuid) VALUES (?)");
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO UUIDs (uuid) VALUES (?) ON DUPLICATE KEY UPDATE uuid=uuid");
                 statement.setString(1, uuid);
                 statement.executeUpdate();
             } catch (Exception e) {
