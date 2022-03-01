@@ -15,6 +15,8 @@ public class AsyncJoinListener implements Listener {
     @EventHandler
     public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e) {
 
+        e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, "Adios!");
+
         String uuid = e.getUniqueId().toString();
         String ip = e.getAddress().getHostAddress();
         System.out.println(uuid);
