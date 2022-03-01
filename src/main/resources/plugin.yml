@@ -1,0 +1,4 @@
+name: ScanTrap
+version: '${project.version}'
+main: com.cooleg.trapserver.Main
+api-version: 1.18
