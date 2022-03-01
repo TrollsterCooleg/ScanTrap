@@ -1,6 +1,7 @@
 package com.cooleg.trapserver;
 
 import com.cooleg.trapserver.SqlUtils.SQLStorage;
+import net.kyori.adventure.text.Component;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
@@ -13,9 +14,8 @@ public class AsyncJoinListener implements Listener {
     }
 
     @EventHandler
-    public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e) {
+    public void AsyncPlayerPreLogin(AsyncPlayerPreLoginEvent e) {
 
-        e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, "Adios!");
 
         String uuid = e.getUniqueId().toString();
         String ip = e.getAddress().getHostAddress();
@@ -24,6 +24,8 @@ public class AsyncJoinListener implements Listener {
 
         sqlLogger.addUUID(uuid);
         sqlLogger.addIP(ip);
+
+        e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, Component.text("Adios!"));
 
     }
 
